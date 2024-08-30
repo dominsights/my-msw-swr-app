@@ -10,5 +10,8 @@ export default function usePersons() {
     error,
   } = useSWR<Person[]>("/api/persons", fetcher);
 
+  console.log("hook was called");
+  console.log(data);
+  
   return { data, loading, error };
 }
