@@ -1,4 +1,4 @@
-Sample project with configuration to make msw work together with swr
+Sample project with configuration to make msw, and swr work with jest.
 
 Run tests with
 
