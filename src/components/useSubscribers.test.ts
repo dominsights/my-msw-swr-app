@@ -15,7 +15,7 @@ describe('useSubscribers', () => {
         server.close()
     });
     
-    it('should load persons data', async () => {
+    it('should load subscribers data', async () => {
         const { result } = renderHook(() => useSubscribers());
         await waitFor(() => result.current.data !== undefined);
         expect(result.current.data).toBeDefined();
