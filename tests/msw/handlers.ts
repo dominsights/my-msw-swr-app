@@ -8,7 +8,7 @@ const subscribers: Subscriber[] = [
 ];
 
 export const handlers = [
-  http.get('/api/persons', () => {
+  http.get('/api/subscribers', () => {
     console.log("handler called")
     return HttpResponse.json(subscribers)
   }),

@@ -16,6 +16,7 @@
     "react-dom": "^18",
     "swr": "^2.2.5",
     "ts-node": "^10.9.2",
+    "ts-results": "^3.3.0",
     "undici": "^6.19.8"
   },
   "devDependencies": {
