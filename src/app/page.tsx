@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Persons from "./components/Subscribers";
+import Subscribers from "../components/Subscribers";
 
 export default function Home() {
   return (
     <main>
-      <Persons/>
+      <Subscribers/>
     </main>
   );
 }

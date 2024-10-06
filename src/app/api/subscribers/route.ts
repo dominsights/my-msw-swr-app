@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Subscriber } from '../../models/Subscriber';
+import { Subscriber } from '../../../lib/models/Subscriber';
 
 const subscriber: Subscriber[] = [
     { name: "John", age: 30 },

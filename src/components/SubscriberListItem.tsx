@@ -1,5 +1,5 @@
 import React from 'react'
-import { Subscriber } from '../models/Subscriber'
+import { Subscriber } from '../lib/models/Subscriber'
 
 export default function SubscriberListItem({subscriber} : {subscriber: Subscriber}) {
   return (
