@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Subscriber } from "../lib/models/Subscriber";
+import { Subscriber } from "../lib/models/subscriber";
 import { Err, Ok, Result } from "ts-results";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())

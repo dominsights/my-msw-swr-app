@@ -1,16 +1,15 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Subscriber } from '../../../lib/models/Subscriber';
+import { Subscriber } from '../../../lib/models/subscriber';
+import { addSubscriber, getSubscribers } from '@/lib/services/subscribers';
 
-const subscribers: Subscriber[] = [
-    { fullName: "John", email: "john@email.com", status: true },
-    { fullName: "Mary", email: "mary@email.com", status: true },
-    { fullName: "Ben", email: "ben@email.com", status: false },
-];
+
 
 export async function GET(request: Request, response: NextApiResponse) {
-    return Response.json(subscribers)
+    return Response.json(await getSubscribers())
 }
 
 export async function POST(request: Request, response: NextApiResponse) {
+    const subscriber: Subscriber = await request.json();
+    await addSubscriber(subscriber)
     return Response.json("ok");
 }

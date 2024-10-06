@@ -2,7 +2,7 @@ import { renderHook, waitFor } from "@testing-library/react";
 import useSubscribers from "./useSubscribers";
 import { setupServer } from 'msw/node'
 import { handlers } from "../../tests/msw/handlers";
-import { Subscriber } from "@/lib/models/Subscriber";
+import { Subscriber } from "@/lib/models/subscriber";
 import { act } from "react";
 
 export const server = setupServer(...handlers)
@@ -33,5 +33,7 @@ describe('useSubscribers', () => {
 
         expect(saved.ok).toBeTruthy();
         expect(saved.val).toEqual("New subscriber has been added successfully!");
+
+        waitFor(() => expect(result.current.data).toContain(subscriber));
     });
 });
