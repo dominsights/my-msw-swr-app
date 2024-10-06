@@ -1,10 +1,10 @@
 "use client"
 import React from 'react'
-import usePersons from './usePersons'
+import useSubscribers from './useSubscribers'
 
 export default function Demo() {
 
-  const { data } = usePersons()
+  const { data } = useSubscribers()
 
   return (
     <>

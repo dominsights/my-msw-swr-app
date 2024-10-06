@@ -1,5 +1,5 @@
 import { renderHook, waitFor } from "@testing-library/react";
-import usePersons from "./usePersons";
+import usePersons from "./useSubscribers";
 import { setupServer } from 'msw/node'
 import { handlers } from "../../../tests/msw/handlers";
 

@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Person } from '../../components/Person';
+import { Subscriber } from '../../components/Subscriber';
 
-const people: Person[] = [
+const subscriber: Subscriber[] = [
     { name: "John", age: 30 },
     { name: "Mary", age: 35 },
     { name: "Ben", age: 46 }
@@ -10,5 +10,5 @@ const people: Person[] = [
 export async function GET(request: Request, response: NextApiResponse) {
     console.log('get called')
 
-    return Response.json(people)
+    return Response.json(subscriber)
 }

@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { Person } from "./Person";
+import { Subscriber } from "./Subscriber";
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
@@ -8,10 +8,7 @@ export default function usePersons() {
     data,
     isLoading: loading,
     error,
-  } = useSWR<Person[]>("/api/persons", fetcher);
-
-  console.log("hook was called");
-  console.log(data);
+  } = useSWR<Subscriber[]>("/api/subscribers", fetcher);
   
   return { data, loading, error };
 }

@@ -1,8 +1,8 @@
 import {render, screen} from '@testing-library/react'
-import Persons from './Persons';
+import Subscribers from './Subscribers';
 
 describe('Persons', () => {
     it('should render', async () => {
-        render(<Persons />)
+        render(<Subscribers />)
     });
 });
