@@ -10,3 +10,7 @@ const subscribers: Subscriber[] = [
 export async function GET(request: Request, response: NextApiResponse) {
     return Response.json(subscribers)
 }
+
+export async function POST(request: Request, response: NextApiResponse) {
+    return Response.json("ok");
+}

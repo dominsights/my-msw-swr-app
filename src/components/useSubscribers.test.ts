@@ -3,6 +3,7 @@ import useSubscribers from "./useSubscribers";
 import { setupServer } from 'msw/node'
 import { handlers } from "../../tests/msw/handlers";
 import { Subscriber } from "@/lib/models/Subscriber";
+import { act } from "react";
 
 export const server = setupServer(...handlers)
 
@@ -25,7 +26,11 @@ describe('useSubscribers', () => {
         const { result } = renderHook(() => useSubscribers());
         await waitFor(() => result.current.data !== undefined);
         const subscriber: Subscriber = { name: "Subscriber1", age: 10}
-        const saved = result.current.addSubscriber(subscriber);
+
+        const saved = await act(async () => {
+            return await result.current.addSubscriber(subscriber);
+        })
+
         expect(saved.ok).toBeTruthy();
         expect(saved.val).toEqual("New subscriber has been added successfully!");
     });
