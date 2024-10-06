@@ -1,4 +1,5 @@
 export type Subscriber = {
-    name: string,
-    age: number
+    fullName: string,
+    email: string,
+    status: boolean
 }

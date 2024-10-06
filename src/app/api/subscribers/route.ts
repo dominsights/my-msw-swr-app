@@ -2,9 +2,9 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { Subscriber } from '../../../lib/models/Subscriber';
 
 const subscribers: Subscriber[] = [
-    { name: "John", age: 30 },
-    { name: "Mary", age: 35 },
-    { name: "Ben", age: 46 }
+    { fullName: "John", email: "john@email.com", status: true },
+    { fullName: "Mary", email: "mary@email.com", status: true },
+    { fullName: "Ben", email: "ben@email.com", status: false },
 ];
 
 export async function GET(request: Request, response: NextApiResponse) {

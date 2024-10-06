@@ -25,7 +25,7 @@ describe('useSubscribers', () => {
     it('should add new subscriber', async () => {
         const { result } = renderHook(() => useSubscribers());
         await waitFor(() => result.current.data !== undefined);
-        const subscriber: Subscriber = { name: "Subscriber1", age: 10}
+        const subscriber: Subscriber = { fullName: "Subscriber1", email: "subscriber1@email.com", status: true}
 
         const saved = await act(async () => {
             return await result.current.addSubscriber(subscriber);
