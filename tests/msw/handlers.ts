@@ -1,4 +1,4 @@
-import { Subscriber } from '@/app/components/Subscriber';
+import { Subscriber } from '@/app/models/Subscriber';
 import { http, HttpResponse } from 'msw'
  
 const subscribers: Subscriber[] = [
