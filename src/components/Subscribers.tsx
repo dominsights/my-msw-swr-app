@@ -1,19 +1,32 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import useSubscribers from "./useSubscribers";
 import { Button, Dialog, Flex, Table, Text, TextField } from "@radix-ui/themes";
 import { PlusIcon } from "@radix-ui/react-icons";
+import { useForm } from "react-hook-form";
 
-export default function Demo() {
+export default function Subscribers() {
   const { data } = useSubscribers();
+  const [isOpen, setIsOpen] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid, isSubmitted },
+  } = useForm();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+    setIsOpen(false);
+  };
+  console.log(errors);
 
   return (
     <>
       {data ? (
         <>
-          <Dialog.Root>
+          <Dialog.Root open={isOpen}>
             <Dialog.Trigger>
-              <Button>
+              <Button onClick={() => setIsOpen(true)}>
                 <PlusIcon /> New subscriber
               </Button>
             </Dialog.Trigger>
@@ -23,18 +36,29 @@ export default function Demo() {
                 Enter the new subscriber information.
               </Dialog.Description>
               <Flex direction="column" gap="3">
-                <label>
-                  <Text as="div" size="2" mb="1" weight="bold">
-                    Full name
-                  </Text>
-                  <TextField.Root placeholder="Enter the subscribers's full name" />
-                </label>
-                <label>
-                  <Text as="div" size="2" mb="1" weight="bold">
-                    Email
-                  </Text>
-                  <TextField.Root placeholder="Enter the subscriber's email" />
-                </label>
+                <form id="dialogForm" onSubmit={handleSubmit(onSubmit)}>
+                  <label>
+                    <Text as="div" size="2" mb="1" weight="bold">
+                      Full name
+                    </Text>
+                    <TextField.Root
+                      placeholder="Enter the subscribers's full name"
+                      {...register("Full name", {
+                        required: true,
+                        maxLength: 80,
+                      })}
+                    />
+                  </label>
+                  <label>
+                    <Text as="div" size="2" mb="1" weight="bold">
+                      Email
+                    </Text>
+                    <TextField.Root
+                      placeholder="Enter the subscriber's email"
+                      {...register("Email", { required: true, maxLength: 80 })}
+                    />
+                  </label>
+                </form>
               </Flex>
 
               <Flex gap="3" mt="4" justify="end">
@@ -44,7 +68,9 @@ export default function Demo() {
                   </Button>
                 </Dialog.Close>
                 <Dialog.Close>
-                  <Button>Save</Button>
+                  <Button type="submit" form="dialogForm">
+                    Save
+                  </Button>
                 </Dialog.Close>
               </Flex>
             </Dialog.Content>
