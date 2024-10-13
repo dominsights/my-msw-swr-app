@@ -15,7 +15,7 @@ describe("Subscribers", () => {
     server.close();
   });
 
-  it("should render", async () => {
+  it("should add new subscriber", async () => {
     const renderResult = render(<Subscribers />);
 
     // Wait for page to load
