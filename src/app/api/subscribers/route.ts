@@ -11,5 +11,5 @@ export async function GET(request: Request, response: NextApiResponse) {
 export async function POST(request: Request, response: NextApiResponse) {
     const subscriber: Subscriber = await request.json();
     await addSubscriber(subscriber)
-    return Response.json("ok");
+    return Response.json("ok", {status: 201});
 }

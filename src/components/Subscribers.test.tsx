@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import Subscribers from "./Subscribers";
 import { handlers } from "../../tests/msw/handlers";
 import { setupServer } from "msw/node";
@@ -29,11 +29,13 @@ describe("Subscribers", () => {
       expect(renderResult.getByText("Add new subscriber")).toBeDefined(),
     );
 
+    // Type full name
     await userEvent.type(
       renderResult.getByRole("textbox", { name: /full name/i }),
       "Domício Medeiros",
     );
 
+    // Type email
     await userEvent.type(
       renderResult.getByRole("textbox", { name: /email/i }),
       "domicio@email.com",
@@ -45,7 +47,7 @@ describe("Subscribers", () => {
       expect(renderResult.queryByText("Add new subscriber")).toBeNull(),
     );
 
-    const newRow = screen.queryByText(/Domício Medeiros domicio@email.com/i);
+    const newRow = renderResult.getByRole('row', {  name: /domício medeiros domicio@email\.com active/i})
     expect(newRow).toBeInTheDocument();
   });
 });

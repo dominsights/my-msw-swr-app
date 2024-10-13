@@ -6,15 +6,16 @@ import { PlusIcon } from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
 
 export default function Subscribers() {
-  const { data } = useSubscribers();
+  const { data, addSubscriber } = useSubscribers();
   const [isOpen, setIsOpen] = useState(false);
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, touchedFields },
+    formState: { errors },
   } = useForm();
 
   const onSubmit = (data: any) => {
+    addSubscriber(data);
     setIsOpen(false);
   };
   console.log(errors);
@@ -42,7 +43,7 @@ export default function Subscribers() {
                     </Text>
                     <TextField.Root
                       placeholder="Enter the subscribers's full name"
-                      {...register("Full name", {
+                      {...register("fullName", {
                         required: true,
                         maxLength: 80,
                       })}
@@ -54,7 +55,7 @@ export default function Subscribers() {
                     </Text>
                     <TextField.Root
                       placeholder="Enter the subscriber's email"
-                      {...register("Email", { required: true, maxLength: 80 })}
+                      {...register("email", { required: true, maxLength: 80 })}
                     />
                   </label>
                 </form>

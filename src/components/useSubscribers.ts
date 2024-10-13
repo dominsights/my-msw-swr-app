@@ -13,6 +13,7 @@ export default function useSubscribers() {
   } = useSWR<Subscriber[]>("/api/subscribers", fetcher);
 
   const addSubscriber = async (subscriber: Subscriber): Promise<Result<string, string>> => {
+    subscriber.status = true;
     const response = await fetch("/api/subscribers", {
       method: "POST",
       body: JSON.stringify(subscriber),
