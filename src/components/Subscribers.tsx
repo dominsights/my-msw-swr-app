@@ -11,14 +11,17 @@ export default function Subscribers() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid, isSubmitted },
+    formState: { errors, isValid, touchedFields },
   } = useForm();
 
   const onSubmit = (data: any) => {
+    console.log("here");
     console.log(data);
     setIsOpen(false);
   };
   console.log(errors);
+  console.log(isValid);
+  console.log(touchedFields);
 
   return (
     <>
