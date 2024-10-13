@@ -12,6 +12,7 @@ function getSubscribers() {
 }
 
 function addSubscriber(subscriber: Subscriber) {
+  subscriber.status = true;
   subscribers.push(subscriber);
   return Promise.resolve(Ok('ok'))
 }
