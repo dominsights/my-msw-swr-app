@@ -9,6 +9,7 @@ export default function useSubscribers() {
     data,
     isLoading: loading,
     error,
+    mutate
   } = useSWR<Subscriber[]>("/api/subscribers", fetcher);
 
   const addSubscriber = async (subscriber: Subscriber): Promise<Result<string, string>> => {
@@ -18,6 +19,7 @@ export default function useSubscribers() {
     });
 
     if(response.status === 201) {
+      mutate();
       return Ok("New subscriber has been added successfully!");
     }
 

@@ -15,13 +15,9 @@ export default function Subscribers() {
   } = useForm();
 
   const onSubmit = (data: any) => {
-    console.log("here");
-    console.log(data);
     setIsOpen(false);
   };
   console.log(errors);
-  console.log(isValid);
-  console.log(touchedFields);
 
   return (
     <>
