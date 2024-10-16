@@ -3,22 +3,16 @@ import React, { useState } from "react";
 import useSubscribers from "./useSubscribers";
 import { Button, Dialog, Flex, Table, Text, TextField } from "@radix-ui/themes";
 import { PlusIcon } from "@radix-ui/react-icons";
-import { useForm } from "react-hook-form";
+import NewSubscriberForm from "./NewSubscriberForm";
 
 export default function Subscribers() {
   const { data, addSubscriber } = useSubscribers();
   const [isOpen, setIsOpen] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
 
   const onSubmit = (data: any) => {
     addSubscriber(data);
     setIsOpen(false);
   };
-  console.log(errors);
 
   return (
     <>
@@ -31,48 +25,7 @@ export default function Subscribers() {
               </Button>
             </Dialog.Trigger>
             <Dialog.Content>
-              <Dialog.Title>Add new subscriber</Dialog.Title>
-              <Dialog.Description size="2" mb="4">
-                Enter the new subscriber information.
-              </Dialog.Description>
-              <Flex direction="column" gap="3">
-                <form id="dialogForm" onSubmit={handleSubmit(onSubmit)}>
-                  <label>
-                    <Text as="div" size="2" mb="1" weight="bold">
-                      Full name
-                    </Text>
-                    <TextField.Root
-                      placeholder="Enter the subscribers's full name"
-                      {...register("fullName", {
-                        required: true,
-                        maxLength: 80,
-                      })}
-                    />
-                  </label>
-                  <label>
-                    <Text as="div" size="2" mb="1" weight="bold">
-                      Email
-                    </Text>
-                    <TextField.Root
-                      placeholder="Enter the subscriber's email"
-                      {...register("email", { required: true, maxLength: 80 })}
-                    />
-                  </label>
-                </form>
-              </Flex>
-
-              <Flex gap="3" mt="4" justify="end">
-                <Dialog.Close>
-                  <Button variant="soft" color="gray">
-                    Cancel
-                  </Button>
-                </Dialog.Close>
-                <Dialog.Close>
-                  <Button type="submit" form="dialogForm">
-                    Save
-                  </Button>
-                </Dialog.Close>
-              </Flex>
+              <NewSubscriberForm onSubmit={onSubmit} />
             </Dialog.Content>
           </Dialog.Root>
           <Table.Root>
